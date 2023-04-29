@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/signupforclassify">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/updattimetable"
+        android:background="@drawable/signupforclassify"
+        app:cornerRadius="50dp"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/messagetxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="Update Timetable"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Time"
+            android:minHeight="48dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/room_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Room no"
+            android:minHeight="48dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/class_name"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="Class Name"
+            android:importantForAutofill="no"
+            tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/teacher_name"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="Teacher Name"
+            android:importantForAutofill="no"
+            tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize" />
+
+
+        <Button
+            android:id="@+id/Add_Update_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Add"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">KeepNotes</string>
+    <string name="hello">hello</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="email_id">Email Id</string>
+    <string name="password" />
+    <string name="Password" />
+    <string name="Confirm_Password" />
+    <string name="Hello" />
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
+    <string name="Login" />
+    <string name="LogIn" />
+    <string name="todo">TODO</string>
+    <string name="add_new_note">Add New Note</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_monday">Hello Monday</string>
+    <string name="hello_tuesday">Hello Tuesday</string>
+    <string name="hello_wednesday">Hello Wednesday</string>
+    <string name="classify">Classify</string>
+    <string name="hello_friday">Hello Friday</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="share">Share</string>
+    <string name="about_us">About Us</string>
+    <string name="open_nav">open_nav</string>
+    <string name="close_nav">close_nav</string>
+</resources>
