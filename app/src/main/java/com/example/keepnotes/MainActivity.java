@@ -1,9 +1,9 @@
 package com.example.keepnotes;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         switch (item.getItemId())
         {
             case R.id.nav_home:
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new HomeFragment()).commit();
                 break;
 
@@ -61,7 +62,19 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
 
             case R.id.share:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ShareFragment()).commit();
+                try {
+                    Intent i=new Intent(Intent.ACTION_SEND);
+                    i.setType("text/plain");
+                    i.putExtra(Intent.EXTRA_SUBJECT,"Check out this cool app! CLASSIFY");
+                    i.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName());
+                    startActivity(Intent.createChooser(i,"Share With"));
+                }catch (Exception e)
+                {
+                    Toast.makeText(this, "Unable to share this app", Toast.LENGTH_SHORT).show();
+                }
+                    
+
+//                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new ShareFragment()).commit();
                 break;
 
 

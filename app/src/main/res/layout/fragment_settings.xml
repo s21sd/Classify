@@ -1,10 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    android:background="@color/lavender"
+    tools:context=".SettingsFragment"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<!--        <ImageView-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:padding="14dp"-->
+<!--            android:src="@drawable/applogo"-->
+<!--            />-->
+<!--        -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Settings"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+
+            tools:ignore="HardcodedText,TextContrastCheck" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="ExtraText,SpeakableTextPresentCheck">>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:contentDescription="TODO"
+                android:src="@drawable/applogo"
+                tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="sunny srivastava"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="+91 9838251790"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blackborder"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="Edit Profile"
+                android:textAllCaps="false"
+                android:textColor="@color/lavender"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+<!--            first layout-->
+
+            <LinearLayout
+                android:background="@drawable/blackborder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+<!--                Dark Mode night mode -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_nightlight_round_24"
+
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="50dp"
+                        android:text="Night Mode"
+                        android:textColor="@color/lavender"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/nightswitch"
+                        tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck,DuplicateSpeakableTextCheck">
+
+                    </Switch>
+
+                </RelativeLayout>
+
+<!--                notification -->
+                <RelativeLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_notifications_none_24"
+
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="50dp"
+                        android:text="Notification"
+                        android:textColor="@color/lavender"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/nightswitch"
+                        tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck">
+
+                    </Switch>
+
+                </RelativeLayout>
 
 
 
-</RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+<!--            second layout-->
+        <LinearLayout
+            android:background="@drawable/blackborder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/baseline_text_fields_24"
+
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:text="Text Size"
+                    android:textColor="@color/lavender"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_arrow_right_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+
+                    tools:ignore="ContentDescription">
+
+
+                </ImageView>
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
