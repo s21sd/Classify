@@ -1,6 +1,6 @@
 package com.example.keepnotes;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId())
         {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new HomeFragment()).commit();
-                Intent intent=new Intent(this,Timetableshow.class);
-                startActivity(intent);
                 break;
 
 

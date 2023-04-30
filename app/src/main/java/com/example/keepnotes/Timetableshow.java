@@ -1,5 +1,6 @@
 package com.example.keepnotes;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ public class Timetableshow extends AppCompatActivity {
 
     TabLayout tab;
     ViewPager viewPager;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,7 @@ public class Timetableshow extends AppCompatActivity {
         ViewPagerMsgAdapter viewPagerMsgAdapter=new ViewPagerMsgAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerMsgAdapter);
         tab.setupWithViewPager(viewPager);
+
 
     }
 }
