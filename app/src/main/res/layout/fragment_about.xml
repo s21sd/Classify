@@ -3,14 +3,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutFragment">
+    tools:context=".AboutFragment"
+    android:background="@color/lavender"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/applogo"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
     <TextView
+        android:id="@+id/app_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="About"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_icon"
+        android:layout_marginTop="16dp"
+        android:text="CLASSIFY"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Version 1.0"
+        android:textAlignment="center"
+        android:textColorHint="@color/black"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/app_version"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/about_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="10dp"
+        android:text="This app helps you keep track of your daily schedule and manage your time effectively. It allows you to add, edit, and delete tasks, and view them in a daily, weekly, or monthly format. With customizable reminders and notifications, you'll never miss an important appointment or deadline again."
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText,VisualLintLongText" />
+
+
+
+        <Button
+            android:id="@+id/share_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/about_description"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/new_github"
+            android:drawablePadding="8dp"
+            android:text="Github"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/share_twitter"
+            android:text="Maiil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/share_facebook"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/new_mail"
+            android:drawablePadding="8dp"
+            android:background="@android:color/white"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/share_github"
+            android:text="Instagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/share_twitter"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/new_insta"
+            android:drawablePadding="8dp"
+            android:background="@android:color/white"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
+
+
 
 </RelativeLayout>
