@@ -48,6 +48,7 @@ public class RecyclerMondayAdapter extends RecyclerView.Adapter<RecyclerMondayAd
         holder.className.setText(myaddmondayapters.get(position).className);
         holder.roomNo.setText(myaddmondayapters.get(position).roomNo);
         holder.teacherName.setText(myaddmondayapters.get(position).teacherName);
+
         setAnimation(holder.itemView,position);
 
         holder.rc.setOnClickListener(view -> {
