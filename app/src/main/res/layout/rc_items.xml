@@ -22,7 +22,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
             android:text="Time"
-            android:textSize="22dp"
+            android:textSize="22sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,TextSizeCheck" />
 
@@ -31,10 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/classnamerc"
-            android:text="Class Name"
-            android:textSize="22dp"
+            android:text="@string/class_name"
+            android:textSize="22sp"
             android:layout_marginTop="12dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
             android:textStyle="bold"
 
             />
@@ -43,34 +43,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/teachernamerc"
-            android:text="Teacher Name"
+            android:text="@string/teacher_name"
             android:layout_marginTop="52dp"
-            android:textSize="22dp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/roomnorc"
-            android:text="Room no"
+            android:text="@string/room_no"
             android:layout_marginTop="32dp"
             android:textStyle="bold"
             android:textSize="22sp"
-            android:layout_marginLeft="250dp"
+            android:layout_marginStart="250dp"
              />
 
 
-
-
-
     </RelativeLayout>
-
-    
-
-
-
 
 
 </androidx.cardview.widget.CardView>

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/updattimetable"
-        android:background="@drawable/signupforclassify"
+
         app:cornerRadius="50dp"
         tools:ignore="UselessParent">
 
@@ -21,11 +21,12 @@
             android:id="@+id/messagetxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="12dp"
             android:gravity="center"
             android:text="Update Timetable"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:textStyle="bold"
+
             tools:ignore="HardcodedText,TextContrastCheck" />
 
         <EditText
@@ -33,7 +34,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
+            android:padding="16dp"
+            android:background="@drawable/blackborder"
             android:hint="Time"
+            android:layout_margin="12dp"
             android:minHeight="48dp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
@@ -43,7 +47,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
+            android:padding="16dp"
+            android:background="@drawable/blackborder"
             android:hint="Room no"
+            android:layout_margin="12dp"
             android:minHeight="48dp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
@@ -54,6 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
+            android:padding="16dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/blackborder"
             android:hint="Class Name"
             android:importantForAutofill="no"
             tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize" />
@@ -64,7 +74,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
+            android:padding="16dp"
             android:hint="Teacher Name"
+            android:layout_margin="12dp"
+            android:background="@drawable/blackborder"
             android:importantForAutofill="no"
             tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize" />
 
@@ -73,9 +86,10 @@
             android:id="@+id/Add_Update_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_margin="20dp"
+            android:layout_margin="12dp"
             android:layout_marginTop="30dp"
             android:gravity="center"
+            android:background="@drawable/blackborder"
             android:text="Add"
             android:textColor="@color/black"
             android:textSize="18sp"

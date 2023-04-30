@@ -1,6 +1,5 @@
 package com.example.keepnotes;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -10,12 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -68,24 +63,21 @@ public class CreateAccountActivity extends AppCompatActivity {
         changeInProgress(true);
 
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
-        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateAccountActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                changeInProgress(false);
-                if(task.isSuccessful())
-                {
-                    // task successful
-//                    utility.showToast(CreateAccountActivity.this,"Successfully create account,Check email to verify");
-//                    Toast.makeText(CreateAccountActivity.this,"Successfully create account,Check email to verify",Toast.LENGTH_SHORT).show();
-                    Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification();
-                    firebaseAuth.signOut();
-                    finish();
-                }
-                else{
-                    // task failure
-//                    utility.showToast(CreateAccountActivity.this, Objects.requireNonNull(task.getException()).getLocalizedMessage());
-//                    Toast.makeText(CreateAccountActivity.this, Objects.requireNonNull(task.getException()).getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateAccountActivity.this, task -> {
+            changeInProgress(false);
+            if(task.isSuccessful())
+            {
+                // task successful
+
+                    Toast.makeText(CreateAccountActivity.this,"Successfully create account,Check email to verify",Toast.LENGTH_SHORT).show();
+                Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification();
+                firebaseAuth.signOut();
+                finish();
+            }
+            else{
+                // task failure
+//
+                    Toast.makeText(CreateAccountActivity.this, Objects.requireNonNull(task.getException()).getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         }
         );

@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         loginbtn=findViewById(R.id.login_btn);
         progressBar=findViewById(R.id.progress_bar);
         createaccountbtntextview=findViewById(R.id.create_account_text_view_btn);
+
         loginbtn.setOnClickListener(view -> loginUser());
         createaccountbtntextview.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)));
     }
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             {
                 if(Objects.requireNonNull(firebaseAuth.getCurrentUser()).isEmailVerified())
                 {
-                    startActivity(new Intent(LoginActivity.this,Timetableshow.class));
+                    startActivity(new Intent(LoginActivity.this,HomeFragment.class));
                     finish();
                 }
                 else{

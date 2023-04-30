@@ -26,4 +26,7 @@
     <string name="about_us">About Us</string>
     <string name="open_nav">open_nav</string>
     <string name="close_nav">close_nav</string>
+    <string name="class_name">Class Name</string>
+    <string name="teacher_name">Teacher Name</string>
+    <string name="room_no">Room no</string>
 </resources>
