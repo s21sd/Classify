@@ -1,6 +1,7 @@
 package com.example.keepnotes;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,16 +15,18 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener  {
     private DrawerLayout drawerLayout;
-
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        firebaseAuth=FirebaseAuth.getInstance();
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout =findViewById(R.id.drawer_layout);
@@ -83,7 +86,21 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 break;
 
             case R.id.nav_logout:
-                Toast.makeText(this, "LogOut Successful", Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Logout")
+                        .setMessage("Are you sure you want to logout?")
+                        .setPositiveButton("Yes", (dialogInterface, i) -> {
+                            firebaseAuth.signOut();
+                            Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
+                        }).setNegativeButton("No", (dialogInterface, i) -> {
+
+                        });
+
+                builder.show();
+
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
