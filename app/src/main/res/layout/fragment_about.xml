@@ -66,7 +66,7 @@
 
 
         <Button
-            android:id="@+id/share_facebook"
+            android:id="@+id/share_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -79,11 +79,11 @@
             tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
 
         <Button
-            android:id="@+id/share_twitter"
-            android:text="Maiil"
+            android:id="@+id/share_mail"
+            android:text="Mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/share_facebook"
+            android:layout_below="@id/share_github"
             android:layout_marginTop="16dp"
             android:drawableLeft="@drawable/new_mail"
             android:drawablePadding="8dp"
@@ -92,11 +92,11 @@
             tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
 
         <Button
-            android:id="@+id/share_github"
-            android:text="Instagram"
+            android:id="@+id/share_insta"
+            android:text="Linkedin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/share_twitter"
+            android:layout_below="@id/share_mail"
             android:layout_marginTop="16dp"
             android:drawableLeft="@drawable/new_insta"
             android:drawablePadding="8dp"
