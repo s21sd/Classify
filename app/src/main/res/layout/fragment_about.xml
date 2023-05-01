@@ -3,19 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AboutFragment"
     android:background="@color/lavender"
     android:orientation="vertical">
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/app_icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:src="@drawable/applogo"
-        tools:ignore="ContentDescription,ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck" />
+
 
     <TextView
         android:id="@+id/app_name"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="176dp"
@@ -9,12 +10,14 @@
     android:background="@drawable/navheader"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="32dp"
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/app_icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="42dp"
         android:src="@drawable/applogo"
-        tools:ignore="ContentDescription,ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:layout_width="wrap_content"

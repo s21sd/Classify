@@ -18,13 +18,13 @@
         tools:ignore="UselessParent">
 
         <ImageView
+            android:id="@+id/login_icon"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginVertical="32dp"
-            android:id="@+id/login_icon"
+            android:layout_marginVertical="22dp"
             android:src="@drawable/login"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,21 +77,22 @@
 
                 tools:ignore="HardcodedText,RtlHardcoded,TextContrastCheck,VisualLintTextFieldSize"
                 android:importantForAutofill="no" />
+
             <EditText
+                android:id="@+id/pass_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/pass_edit_text"
-                android:inputType="textPassword"
-                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/lavenderborder"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:hint="Password"
-                android:textSize="20sp"
-                android:background="@drawable/lavenderborder"
+                android:inputType="textPassword"
                 android:padding="16dp"
-                android:layout_marginTop="12dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
 
-                tools:ignore="Autofill,HardcodedText,RtlHardcoded,VisualLintTextFieldSize" />
+                tools:ignore="Autofill,HardcodedText,RtlHardcoded,VisualLintTextFieldSize,TextContrastCheck" />
 
             <EditText
                 android:id="@+id/confirm_pass_edit_text"
