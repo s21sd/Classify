@@ -6,17 +6,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:layout_gravity="bottom"
     android:background="@drawable/splash"
     tools:context=".splash">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/app_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/applogo"
+        tools:ignore="ImageContrastCheck,ObsoleteLayoutParam" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="C Classify"
+        android:text="Classify"
         android:textSize="32sp"
         android:textColor="@color/black"
         android:gravity="center"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <ProgressBar
         android:layout_width="35dp"

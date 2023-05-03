@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash"
-    android:gravity="center"
     tools:context=".Tuesday">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:id="@+id/mondayrecycler"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnopendialog"
@@ -26,4 +26,9 @@
         tools:ignore="ContentDescription,ImageContrastCheck,MissingConstraints,RtlHardcoded,SpeakableTextPresentCheck" />
 
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

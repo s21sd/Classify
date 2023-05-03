@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AboutFragment"
-    android:background="@color/lavender"
+    android:background="@drawable/splash"
     android:orientation="vertical">
 
 
@@ -58,55 +58,55 @@
         android:id="@+id/about_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
         android:layout_below="@id/divider"
         android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textStyle="bold"
         android:text="This app helps you keep track of your daily schedule and manage your time effectively. It allows you to add, edit, and delete tasks, and view them in a daily, weekly, or monthly format. With customizable reminders and notifications, you'll never miss an important appointment or deadline again."
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        tools:ignore="HardcodedText,VisualLintLongText" />
+        tools:ignore="HardcodedText,VisualLintLongText,TextContrastCheck" />
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_description"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/share_github"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_below="@id/about_description"
+            android:layout_margin="32dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@android:color/white"
             android:drawableLeft="@drawable/new_github"
-            android:drawablePadding="8dp"
-            android:text="Github"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
+            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize,SpeakableTextPresentCheck"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/share_mail"
-            android:text="Mail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/share_github"
-            android:layout_marginTop="16dp"
-            android:drawableLeft="@drawable/new_mail"
-            android:drawablePadding="8dp"
+            android:layout_width="70dp"
+            android:layout_margin="32dp"
+            android:layout_height="70dp"
             android:background="@android:color/white"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
+            android:drawableLeft="@drawable/new_mail"
+            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize,SpeakableTextPresentCheck"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/share_insta"
-            android:text="Linkedin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/share_mail"
-            android:layout_marginTop="16dp"
-            android:drawableLeft="@drawable/new_insta"
-            android:drawablePadding="8dp"
+            android:layout_width="70dp"
+            android:layout_margin="32dp"
+            android:layout_height="70dp"
             android:background="@android:color/white"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize" />
-
+            android:drawableLeft="@drawable/new_insta"
+            tools:ignore="HardcodedText,RtlHardcoded,VisualLintButtonSize,SpeakableTextPresentCheck"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
 
 
 </RelativeLayout>

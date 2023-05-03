@@ -16,25 +16,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 
 public class Monday extends Fragment {
     ArrayList<myaddmondayapter>myaddmondayapters=new ArrayList<>();
-
+    RecyclerView recyclerView;
+    RecyclerMondayAdapter adapter;
+    FloatingActionButton floatingActionButton;
+    DatabaseReference databaseReference;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_monday, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.mondayrecycler);
+        recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         FloatingActionButton floatingActionButton= view.findViewById(R.id.btnopendialog);
 
-
-        RecyclerMondayAdapter adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
+        adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
         recyclerView.setAdapter(adapter);
 
         floatingActionButton.setOnClickListener(view1 -> {
@@ -51,6 +55,7 @@ public class Monday extends Fragment {
             heading=dialog.findViewById(R.id.messagetxt);
             Button btnAction=dialog.findViewById(R.id.Add_Update_btn);
 
+            databaseReference = FirebaseDatabase.getInstance().getReference("Monday");
             heading.setText("CREATE TIMETABLE");
             btnAction.setText("ADD");
 
@@ -64,11 +69,20 @@ public class Monday extends Fragment {
                 if(!className.getText().toString().equals(""))
                 {
                      classnewName=className.getText().toString();
+                    myaddmondayapter data = new myaddmondayapter(timgo, roomnewNo, teachName, classnewName);
+                    databaseReference.push().setValue(data);
+                    Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show();
+
+
+
+
                 }
                 else{
                     Toast.makeText(getContext(), "Class Name Can Not be Empty!", Toast.LENGTH_SHORT).show();
 
                 }
+
+
 
                 myaddmondayapters.add(new myaddmondayapter(timgo,roomnewNo,teachName,classnewName));
                 adapter.notifyItemChanged(myaddmondayapters.size()-1);

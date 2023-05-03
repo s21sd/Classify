@@ -3,32 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lavender"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/splash"
     tools:context=".SettingsFragment"
     android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-<!--        <ImageView-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:padding="14dp"-->
-<!--            android:src="@drawable/applogo"-->
-<!--            />-->
-<!--        -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Settings"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-
-            tools:ignore="HardcodedText,TextContrastCheck" />
-    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,14 +18,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/app_icon"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:contentDescription="TODO"
+                android:layout_marginTop="22dp"
                 android:src="@drawable/applogo"
-                tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck" />
 
 
             <TextView
@@ -61,33 +39,26 @@
                 android:textStyle="bold"
                 tools:ignore="HardcodedText,TextContrastCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="+91 9838251790"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,TextContrastCheck" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/blackborder"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:text="Edit Profile"
-                android:textAllCaps="false"
-                android:textColor="@color/lavender"
-                tools:ignore="HardcodedText,TextContrastCheck" />
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/blackborder"-->
+<!--                android:paddingStart="20dp"-->
+<!--                android:paddingEnd="20dp"-->
+<!--                android:text="Edit Profile"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/lavender"-->
+<!--                tools:ignore="HardcodedText,TextContrastCheck" />-->
 
 <!--            first layout-->
 
             <LinearLayout
-                android:background="@drawable/blackborder"
+                android:background="@drawable/lavenderborder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -122,6 +93,7 @@
 
                     <Switch
                         android:layout_width="wrap_content"
+                        android:id="@+id/nigntmodebtn"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
@@ -158,6 +130,7 @@
                         tools:ignore="HardcodedText,TextContrastCheck" />
 
                     <Switch
+                        android:id="@+id/notificationonoff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -180,7 +153,8 @@
 
 <!--            second layout-->
         <LinearLayout
-            android:background="@drawable/blackborder"
+            android:id="@+id/themeopen"
+            android:background="@drawable/lavenderborder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -191,6 +165,7 @@
             android:padding="15dp">
 
             <RelativeLayout
+                android:id="@+id/textsizeChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:ignore="UselessParent">
@@ -198,33 +173,103 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/baseline_text_fields_24"
-
+                    android:src="@drawable/baseline_settings_24"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="50dp"
-                    android:text="Text Size"
+                    android:paddingBottom="13dp"
+                    android:text="Theme Mode"
                     android:textColor="@color/lavender"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText,TextContrastCheck" />
 
+                <HorizontalScrollView
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_arrow_right_24"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    <LinearLayout
+                        android:id="@+id/themeOptions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
-                    tools:ignore="ContentDescription">
+                        <Button
+                            android:id="@+id/themeOption1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Theme 1"
+                            android:textColor="#263238"
+                            app:cornerRadius="20dp"
+                            tools:ignore="ButtonStyle,HardcodedText" />
+
+                        <Button
+                            android:id="@+id/themeOption2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Theme 2"
+                            android:textColor="#263238"
+                            app:cornerRadius="20dp"
+                            tools:ignore="ButtonStyle,HardcodedText" />
+
+                        <Button
+                            android:id="@+id/themeOption3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Theme 4"
+                            android:textColor="#263238"
+                            app:cornerRadius="20dp"
+                            tools:ignore="ButtonStyle,HardcodedText" />
+
+                        <Button
+                            android:id="@+id/themeOption4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Theme 5"
+                            android:textColor="#263238"
+                            app:cornerRadius="20dp"
+                            tools:ignore="ButtonStyle,HardcodedText,TextContrastCheck" />
+                        <Button
+                            android:id="@+id/themeOption5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            app:cornerRadius="20dp"
+                            android:text="Theme 6"
+                            tools:ignore="ButtonStyle,HardcodedText" />
 
 
-                </ImageView>
+
+
+                        <!-- add more buttons here as needed -->
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+
+
+                <!--                <ImageView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/baseline_arrow_right_24"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_centerVertical="true"-->
+
+<!--                    tools:ignore="ContentDescription">-->
+
+
+<!--                </ImageView>-->
 
 
 

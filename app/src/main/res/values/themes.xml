@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 <!--        this is for night mode-->
-    <style name="nightswitch" parent="Theme.AppCompat.Light">
+    <style name="nightswitch" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorControlActivated">#8692f7</item>
         <item name="android:colorForeground">#ff424242</item>
         <item name="android:colorBackgroundFloating">#ff424242</item>
@@ -22,7 +22,7 @@
     </style>
 
 <!--    this is for the notification-->
-    <style name="notification" parent="Theme.AppCompat.Light">
+    <style name="notification" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorControlActivated">#8692f7</item>
         <item name="android:colorForeground">#ff424242</item>
         <item name="android:colorBackgroundFloating">#ff424242</item>
