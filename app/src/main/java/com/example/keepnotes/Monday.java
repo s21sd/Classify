@@ -29,6 +29,7 @@ public class Monday extends Fragment {
     FloatingActionButton floatingActionButton;
     DatabaseReference databaseReference;
 
+
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,9 +38,18 @@ public class Monday extends Fragment {
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         FloatingActionButton floatingActionButton= view.findViewById(R.id.btnopendialog);
-
         adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
         recyclerView.setAdapter(adapter);
+
+        // for Retrieving the data from the firebase
+
+
+
+
+
+
+
+
 
         floatingActionButton.setOnClickListener(view1 -> {
             EditText time,roomNo,teacherName,className;
@@ -69,6 +79,7 @@ public class Monday extends Fragment {
                 if(!className.getText().toString().equals(""))
                 {
                      classnewName=className.getText().toString();
+                     // For Adding the data successfully
                     myaddmondayapter data = new myaddmondayapter(timgo, roomnewNo, teachName, classnewName);
                     databaseReference.push().setValue(data);
                     Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show();

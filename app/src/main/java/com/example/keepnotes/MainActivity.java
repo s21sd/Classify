@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Logout")
                         .setMessage("Are you sure you want to logout?")
+                        .setIcon(R.drawable.baseline_logout_24)
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
                             firebaseAuth.signOut();
                             Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
