@@ -11,15 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Monday extends Fragment {
@@ -28,7 +33,6 @@ public class Monday extends Fragment {
     RecyclerMondayAdapter adapter;
     FloatingActionButton floatingActionButton;
     DatabaseReference databaseReference;
-
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -42,11 +46,6 @@ public class Monday extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // for Retrieving the data from the firebase
-
-
-
-
-
 
 
 
