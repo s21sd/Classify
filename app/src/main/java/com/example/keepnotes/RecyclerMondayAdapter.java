@@ -32,6 +32,9 @@ public class RecyclerMondayAdapter extends RecyclerView.Adapter<RecyclerMondayAd
         this.myaddmondayapters=myaddmondayapters;
     }
 
+
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
