@@ -1,13 +1,8 @@
-package com.example.keepnotes;
+package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,28 +11,41 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 
-public class Saturday extends Fragment {
+public class Monday extends Fragment {
 
-    ArrayList<myaddmondayapter> myaddmondayapters=new ArrayList<>();
 
-    @SuppressLint("SetTextI18n")
+    ArrayList<myaddmondayapter>myaddmondayapters=new ArrayList<>();
+    RecyclerView recyclerView;
+    RecyclerMondayAdapter adapter;
+    FloatingActionButton floatingActionButton;
+    DatabaseReference databaseReference;
+
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_monday, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.mondayrecycler);
+        recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         FloatingActionButton floatingActionButton= view.findViewById(R.id.btnopendialog);
-
-
-        RecyclerMondayAdapter adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
+        adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
         recyclerView.setAdapter(adapter);
+
+        // for Retrieving the data from the firebase
+
+
+
 
         floatingActionButton.setOnClickListener(view1 -> {
             EditText time,roomNo,teacherName,className;
@@ -53,24 +61,35 @@ public class Saturday extends Fragment {
             heading=dialog.findViewById(R.id.messagetxt);
             Button btnAction=dialog.findViewById(R.id.Add_Update_btn);
 
+            databaseReference = FirebaseDatabase.getInstance().getReference("Monday");
             heading.setText("CREATE TIMETABLE");
             btnAction.setText("ADD");
 
 
             btnAction.setOnClickListener(view11 -> {
                 String timgo,roomnewNo,teachName,classnewName="";
-                timgo=time.getText().toString();
-                roomnewNo=roomNo.getText().toString();
-                teachName=teacherName.getText().toString();
+                 timgo=time.getText().toString();
+                 roomnewNo=roomNo.getText().toString();
+                 teachName=teacherName.getText().toString();
 
                 if(!className.getText().toString().equals(""))
                 {
-                    classnewName=className.getText().toString();
+                     classnewName=className.getText().toString();
+                     // For Adding the data successfully
+                    myaddmondayapter data = new myaddmondayapter(timgo, roomnewNo, teachName, classnewName);
+                    databaseReference.push().setValue(data);
+                    Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show();
+
+
+
+
                 }
                 else{
                     Toast.makeText(getContext(), "Class Name Can Not be Empty!", Toast.LENGTH_SHORT).show();
 
                 }
+
+
 
                 myaddmondayapters.add(new myaddmondayapter(timgo,roomnewNo,teachName,classnewName));
                 adapter.notifyItemChanged(myaddmondayapters.size()-1);

@@ -1,4 +1,4 @@
-package com.example.keepnotes;
+package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -20,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class Tuesday extends Fragment {
+public class Wednesday extends Fragment {
 
     ArrayList<myaddmondayapter> myaddmondayapters=new ArrayList<>();
 
@@ -28,6 +28,8 @@ public class Tuesday extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.fragment_monday, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -82,8 +84,6 @@ public class Tuesday extends Fragment {
         });
 
         return  view;
-
-
 
     }
 }

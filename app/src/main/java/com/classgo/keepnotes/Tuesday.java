@@ -1,4 +1,4 @@
-package com.example.keepnotes;
+package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -20,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class Thursday extends Fragment {
+public class Tuesday extends Fragment {
 
     ArrayList<myaddmondayapter> myaddmondayapters=new ArrayList<>();
 

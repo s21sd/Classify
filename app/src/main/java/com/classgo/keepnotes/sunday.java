@@ -1,4 +1,4 @@
-package com.example.keepnotes;
+package com.classgo.keepnotes;
 
 import android.app.Dialog;
 import android.os.Bundle;

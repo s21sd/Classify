@@ -1,4 +1,4 @@
-package com.example.keepnotes;
+package com.classgo.keepnotes;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -103,13 +103,6 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             FirebaseUser user=firebaseAuth.getCurrentUser();
-                            User user1=new User();
-                            user1.setUserId(user.getUid());
-                            user1.setName(user.getDisplayName());
-                            user1.setProfile(user.getPhotoUrl().toString());
-
-                            database.getReference().child("Users").child(user.getUid()).setValue(user1);
-
                             Intent intent =new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(intent);
                             finish();

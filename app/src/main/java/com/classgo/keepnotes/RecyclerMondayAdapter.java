@@ -1,4 +1,4 @@
-package com.example.keepnotes;
+package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

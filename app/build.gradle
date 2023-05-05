@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.keepnotes'
+    namespace 'com.classgo.keepnotes'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.keepnotes"
+        applicationId "com.classgo.keepnotes"
         minSdk 23
         targetSdk 33
         versionCode 1
@@ -32,7 +32,7 @@ android {
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-auth:22.0.0'
     implementation 'com.google.firebase:firebase-firestore:24.6.0'

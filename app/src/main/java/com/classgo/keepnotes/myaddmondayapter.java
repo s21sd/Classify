@@ -1,4 +1,4 @@
-package com.example.keepnotes;
+package com.classgo.keepnotes;
 
 public class myaddmondayapter  {
     String time,roomNo,teacherName,className;
