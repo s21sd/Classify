@@ -2,7 +2,9 @@ package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +13,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
@@ -25,11 +34,24 @@ import java.util.ArrayList;
 public class Monday extends Fragment {
 
 
-    ArrayList<myaddmondayapter>myaddmondayapters=new ArrayList<>();
+    // this is for retriving the data
     RecyclerView recyclerView;
+    FirebaseDatabase db=FirebaseDatabase.getInstance();
+    DatabaseReference reference=db.getReference().child("Monday");
+
+    MyAdapter myAdapter;
+    ArrayList<user> list;
+    //
+
+
+    ArrayList<myaddmondayapter>myaddmondayapters=new ArrayList<>();
     RecyclerMondayAdapter adapter;
     FloatingActionButton floatingActionButton;
     DatabaseReference databaseReference;
+
+    ArrayList<user>userArrayList;
+
+//    ProgressDialog progressDialog;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -42,7 +64,42 @@ public class Monday extends Fragment {
         adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
         recyclerView.setAdapter(adapter);
 
-        // for Retrieving the data from the firebase
+
+
+//        progressDialog=new ProgressDialog(getActivity());
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Fetching Data..");
+//        progressDialog.show();
+
+
+
+        recyclerView=view.findViewById(R.id.mondayrecycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        list=new ArrayList<>();
+        myAdapter=new MyAdapter(getActivity(),list);
+        recyclerView.setAdapter(myAdapter);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren())
+                {
+                    user user=dataSnapshot.getValue(user.class);
+                    list.add(user);
+
+                }
+                myAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
 
 
@@ -105,4 +162,8 @@ public class Monday extends Fragment {
         return  view;
 
     }
+
+
+
+
 }

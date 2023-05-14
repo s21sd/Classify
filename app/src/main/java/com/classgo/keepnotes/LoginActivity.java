@@ -47,9 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
 
-        progressDialog=new ProgressDialog(LoginActivity.this);
-        progressDialog.setTitle("Creating Account");
-        progressDialog.setMessage("We are creating your account");
+//        progressDialog=new ProgressDialog(LoginActivity.this);
+//        progressDialog.setTitle("Creating Account");
+//        progressDialog.setMessage("We are creating your account");
 
         googlesignin=findViewById(R.id.logingoogle);
         gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -85,9 +85,10 @@ public class LoginActivity extends AppCompatActivity {
             Task<GoogleSignInAccount>task=GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
               GoogleSignInAccount account=  task.getResult(ApiException.class);
-                finish();
+
                 Intent intent =new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
 
 
             } catch (ApiException e) {
@@ -103,15 +104,23 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             FirebaseUser user=firebaseAuth.getCurrentUser();
-                            Intent intent =new Intent(LoginActivity.this,MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            startGoogle();
+//                            Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+//                            startActivity(intent);
+//                            finish();
                         }
                         else{
                             Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
 
                 });
+
+    }
+
+    private void startGoogle() {
+        finish();
+        Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(intent);
 
     }
 
@@ -136,13 +145,15 @@ public class LoginActivity extends AppCompatActivity {
         changeInProgress(true);
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
             changeInProgress(false);
+            progressBar.setVisibility(View.GONE);
+            loginbtn.setEnabled(true);
             if(task.isSuccessful())
             {
                 if(Objects.requireNonNull(firebaseAuth.getCurrentUser()).isEmailVerified())
                 {
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                    Toast.makeText(this, "Log in Successful", Toast.LENGTH_SHORT).show();
-                    finish();
+                    startMainActivity();
+
+
                 }
                 else{
                     Toast.makeText(this, "Email not verified, Please verify your email.", Toast.LENGTH_SHORT).show();
@@ -156,6 +167,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void startMainActivity() {
+        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        Toast.makeText(this, "Log in Successful", Toast.LENGTH_SHORT).show();
+        finish();
+
+    }
+
     void  changeInProgress(boolean inProgress)
     {
         if(inProgress)

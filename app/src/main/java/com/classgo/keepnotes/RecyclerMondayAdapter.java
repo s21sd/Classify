@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class RecyclerMondayAdapter extends RecyclerView.Adapter<RecyclerMondayAdapter.ViewHolder> {
 
-
     Context context;
     ArrayList<myaddmondayapter>myaddmondayapters;
     private  int lastPosition=-1;

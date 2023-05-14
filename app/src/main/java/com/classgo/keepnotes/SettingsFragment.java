@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 
@@ -35,6 +37,7 @@ public class SettingsFragment extends Fragment {
 
     RelativeLayout textsizechange;
 
+    Button themeoption1;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -42,6 +45,14 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_settings, container, false);
 
+        themeoption1=view.findViewById(R.id.themeOption1);
+
+//        themeoption1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getActivity(),texttingRecycler.class));
+//            }
+//        });
 
 
 
