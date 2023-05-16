@@ -29,20 +29,14 @@ import java.util.ArrayList;
 public class Monday extends Fragment {
 
 
-    // this is for retriving the data
+    // this is for retrieving the data
     RecyclerView recyclerView;
-//    FirebaseDatabase db=FirebaseDatabase.getInstance();
+
     DatabaseReference reference;
 
     MyAdapter myAdapter;
     ArrayList<user> list;
 
-    ArrayList<myaddmondayapter>myaddmondayapters=new ArrayList<>();
-    RecyclerMondayAdapter adapter;
-    FloatingActionButton floatingActionButton;
-    DatabaseReference databaseReference;
-
-//    ArrayList<user>userArrayList;
 
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
@@ -53,15 +47,11 @@ public class Monday extends Fragment {
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         list=new ArrayList<>();
-        myAdapter = new MyAdapter(getActivity(), list);
+        myAdapter = new MyAdapter(getActivity(), list,"Monday");
         recyclerView.setAdapter(myAdapter);
 
         reference= FirebaseDatabase.getInstance().getReference().child("Monday");
 
-
-//        FloatingActionButton floatingActionButton= view.findViewById(R.id.btnopendialog);
-//        adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
-//        recyclerView.setAdapter(adapter);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,9 +113,7 @@ public class Monday extends Fragment {
 
             user newUser = new user(classnewName, roomnewNo, teachName, timgo);
             reference.push().setValue(newUser)
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show();
-                    })
+                    .addOnSuccessListener(aVoid -> Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show())
                     .addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed to add data", Toast.LENGTH_SHORT).show());
 
             dialog.dismiss();
