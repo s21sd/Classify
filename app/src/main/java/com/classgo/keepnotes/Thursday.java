@@ -112,7 +112,7 @@ public class Thursday extends Fragment {
             user newUser = new user(classnewName, roomnewNo, teachName, timgo);
             reference.push().setValue(newUser)
                     .addOnSuccessListener(aVoid -> Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show())
-                    .addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed to add data", Toast.LENGTH_SHORT).show());
+                    .addOnFailureListener(e ->{});
 
             dialog.dismiss();
         });
