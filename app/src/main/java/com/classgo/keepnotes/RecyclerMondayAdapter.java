@@ -18,6 +18,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class RecyclerMondayAdapter extends RecyclerView.Adapter<RecyclerMondayAdapter.ViewHolder> {
@@ -30,9 +33,6 @@ public class RecyclerMondayAdapter extends RecyclerView.Adapter<RecyclerMondayAd
         this.context=context;
         this.myaddmondayapters=myaddmondayapters;
     }
-
-
-
 
     @NonNull
     @Override
@@ -77,14 +77,21 @@ public class RecyclerMondayAdapter extends RecyclerView.Adapter<RecyclerMondayAd
 
 
             addupdatebtn.setOnClickListener(view1 -> {
-                String timgo,roomnewNo,teachName,classnewName="";
-                timgo=time.getText().toString();
-                roomnewNo=roomno.getText().toString();
-                teachName=teachername.getText().toString();
+                String timgo = time.getText().toString();
+                String roomnewNo = roomno.getText().toString();
+                String teachName = teachername.getText().toString();
+                String classnewName = classname.getText().toString();
 
-                if(!classname.getText().toString().equals(""))
+                if(!classnewName.isEmpty())
                 {
-                    classnewName=classname.getText().toString();
+                    myaddmondayapter updatedData = new myaddmondayapter(timgo, roomnewNo, teachName, classnewName);
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Monday");
+                    String dataKey = myaddmondayapters.get(position).getKey();
+                    databaseReference.child(dataKey).setValue(updatedData);
+
+                    myaddmondayapters.set(position, updatedData);
+                    notifyItemChanged(position);
+                    dialog.dismiss();
                 }
                 else{
                     Toast.makeText(context, "Class Name Can Not be Empty!", Toast.LENGTH_SHORT).show();

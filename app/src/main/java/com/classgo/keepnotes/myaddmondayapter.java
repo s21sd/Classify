@@ -1,6 +1,7 @@
 package com.classgo.keepnotes;
 
 public class myaddmondayapter  {
+    private  String key;
     String time,roomNo,teacherName,className;
 
     public String getTime() {
@@ -35,6 +36,13 @@ public class myaddmondayapter  {
         this.className = className;
     }
 
+    public String getKey() {
+        return  key;
+    }
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public myaddmondayapter(String time, String roomNo, String teacherName, String className)
     {
         this.time=time;
@@ -43,6 +51,7 @@ public class myaddmondayapter  {
         this.className=className;
 
     }
+
 
 
 }

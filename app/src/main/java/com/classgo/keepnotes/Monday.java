@@ -2,9 +2,7 @@ package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
@@ -36,22 +31,19 @@ public class Monday extends Fragment {
 
     // this is for retriving the data
     RecyclerView recyclerView;
-    FirebaseDatabase db=FirebaseDatabase.getInstance();
-    DatabaseReference reference=db.getReference().child("Monday");
+//    FirebaseDatabase db=FirebaseDatabase.getInstance();
+    DatabaseReference reference;
 
     MyAdapter myAdapter;
     ArrayList<user> list;
-    //
-
 
     ArrayList<myaddmondayapter>myaddmondayapters=new ArrayList<>();
     RecyclerMondayAdapter adapter;
     FloatingActionButton floatingActionButton;
     DatabaseReference databaseReference;
 
-    ArrayList<user>userArrayList;
+//    ArrayList<user>userArrayList;
 
-//    ProgressDialog progressDialog;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -60,110 +52,87 @@ public class Monday extends Fragment {
         View view = inflater.inflate(R.layout.fragment_monday, container, false);
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        FloatingActionButton floatingActionButton= view.findViewById(R.id.btnopendialog);
-        adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
-        recyclerView.setAdapter(adapter);
-
-
-
-//        progressDialog=new ProgressDialog(getActivity());
-//        progressDialog.setCancelable(false);
-//        progressDialog.setMessage("Fetching Data..");
-//        progressDialog.show();
-
-
-
-        recyclerView=view.findViewById(R.id.mondayrecycler);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         list=new ArrayList<>();
-        myAdapter=new MyAdapter(getActivity(),list);
+        myAdapter = new MyAdapter(getActivity(), list);
         recyclerView.setAdapter(myAdapter);
+
+        reference= FirebaseDatabase.getInstance().getReference().child("Monday");
+
+
+//        FloatingActionButton floatingActionButton= view.findViewById(R.id.btnopendialog);
+//        adapter=new RecyclerMondayAdapter(getActivity(),myaddmondayapters);
+//        recyclerView.setAdapter(adapter);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot:snapshot.getChildren())
-                {
-                    user user=dataSnapshot.getValue(user.class);
+                list.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    user user = dataSnapshot.getValue(user.class);
+                    assert user != null;
+                    user.setKey(dataSnapshot.getKey());
                     list.add(user);
-
                 }
                 myAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getActivity(), "Failed to retrieve data", Toast.LENGTH_SHORT).show();
             }
         });
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.btnopendialog);
+        floatingActionButton.setOnClickListener(view1 -> openDialog());
+
+        return view;
 
 
-
-
-
-
-        floatingActionButton.setOnClickListener(view1 -> {
-            EditText time,roomNo,teacherName,className;
-            TextView heading;
-
-            Dialog dialog =new Dialog(getActivity());
-            dialog.setContentView(R.layout.activity_custom_dialog_adapter);
-
-            time=dialog.findViewById(R.id.time);
-            roomNo=dialog.findViewById(R.id.room_no);
-            teacherName=dialog.findViewById(R.id.teacher_name);
-            className=dialog.findViewById(R.id.class_name);
-            heading=dialog.findViewById(R.id.messagetxt);
-            Button btnAction=dialog.findViewById(R.id.Add_Update_btn);
-
-            databaseReference = FirebaseDatabase.getInstance().getReference("Monday");
-            heading.setText("CREATE TIMETABLE");
-            btnAction.setText("ADD");
-
-
-            btnAction.setOnClickListener(view11 -> {
-                String timgo,roomnewNo,teachName,classnewName="";
-                 timgo=time.getText().toString();
-                 roomnewNo=roomNo.getText().toString();
-                 teachName=teacherName.getText().toString();
-
-                if(!className.getText().toString().equals(""))
-                {
-                     classnewName=className.getText().toString();
-                     // For Adding the data successfully
-                    myaddmondayapter data = new myaddmondayapter(timgo, roomnewNo, teachName, classnewName);
-                    databaseReference.push().setValue(data);
-                    Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show();
-
-
-
-
-                }
-                else{
-                    Toast.makeText(getContext(), "Class Name Can Not be Empty!", Toast.LENGTH_SHORT).show();
-
-                }
-
-
-
-                myaddmondayapters.add(new myaddmondayapter(timgo,roomnewNo,teachName,classnewName));
-                adapter.notifyItemChanged(myaddmondayapters.size()-1);
-                recyclerView.scrollToPosition(myaddmondayapters.size()-1);
-
-                dialog.dismiss();
-
-            });
-
-            dialog.show();
-        });
-
-        return  view;
 
     }
 
+    private void openDialog() {
+        EditText time, roomNo, teacherName, className;
+        TextView heading;
+        Button btnAction;
 
+        Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.activity_custom_dialog_adapter);
+
+        time = dialog.findViewById(R.id.time);
+        roomNo = dialog.findViewById(R.id.room_no);
+        teacherName = dialog.findViewById(R.id.teacher_name);
+        className = dialog.findViewById(R.id.class_name);
+        heading = dialog.findViewById(R.id.messagetxt);
+        btnAction = dialog.findViewById(R.id.Add_Update_btn);
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Monday");
+
+        heading.setText("CREATE TIMETABLE");
+        btnAction.setText("ADD");
+
+        btnAction.setOnClickListener(view11 -> {
+            String timgo = time.getText().toString();
+            String roomnewNo = roomNo.getText().toString();
+            String teachName = teacherName.getText().toString();
+            String classnewName = className.getText().toString();
+
+            if (classnewName.equals("")) {
+                Toast.makeText(getContext(), "Class Name Cannot be Empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            user newUser = new user(classnewName, roomnewNo, teachName, timgo);
+            reference.push().setValue(newUser)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(getActivity(), "Data added successfully!", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed to add data", Toast.LENGTH_SHORT).show());
+
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
 
 
 }
