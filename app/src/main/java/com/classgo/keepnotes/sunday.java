@@ -65,7 +65,7 @@ public class sunday extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Failed to retrieve data", Toast.LENGTH_SHORT).show();
+
             }
         });
         FloatingActionButton floatingActionButton = view.findViewById(R.id.btnopendialog);
