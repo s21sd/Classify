@@ -38,7 +38,6 @@ public class Monday extends Fragment {
     ArrayList<user> list;
 
 
-
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +53,7 @@ public class Monday extends Fragment {
 
 
         reference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
@@ -80,6 +80,7 @@ public class Monday extends Fragment {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void openDialog() {
         EditText time, roomNo, teacherName, className;
         TextView heading;

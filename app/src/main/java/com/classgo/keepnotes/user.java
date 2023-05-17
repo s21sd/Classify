@@ -16,11 +16,12 @@ public class user {
 
     }
 
-    public user(String time, String classname, String teachername, String roomno) {
-        this.time = time;
+    public user( String classname, String roomno, String teachername,String time) {
+
         this.className = classname;
-        this.teacherName = teachername;
         this.roomNo = roomno;
+        this.teacherName = teachername;
+        this.time = time;
     }
 
     public  String getTime() {

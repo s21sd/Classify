@@ -97,7 +97,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                 if(!classnewName.isEmpty())
                 {
-                    user updatedData = new user(timgo, roomnewNo, teachName, classnewName);
+                    user updatedData = new user(classnewName, roomnewNo,teachName,timgo);
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(day);
                     String dataKey = userArrayList.get(position).getKey(); // Assuming you have a "getKey" method in your "myaddmondayapter" class
                     databaseReference.child(dataKey).setValue(updatedData);
