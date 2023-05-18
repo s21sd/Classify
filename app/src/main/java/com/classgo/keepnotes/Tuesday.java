@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,19 +37,27 @@ public class Tuesday extends Fragment {
     MyAdapter myAdapter;
 
     ArrayList<user> list;
+    String userId;
 
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_monday, container, false);
+        // this is for the every new user to update the value of the firebase
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if(currentUser!=null)
+        {
+             userId = currentUser.getUid();
+        }
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         list=new ArrayList<>();
         myAdapter = new MyAdapter(getActivity(), list,"Tuesday");
         recyclerView.setAdapter(myAdapter);
 
-        reference= FirebaseDatabase.getInstance().getReference().child("Tuesday");
+        reference= FirebaseDatabase.getInstance().getReference().child("Tuesday").child(userId);
 
 //        FloatingActionButton floatingActionButton= view.findViewById(R.id.btnopendialog);
 
@@ -93,7 +103,7 @@ public class Tuesday extends Fragment {
         heading = dialog.findViewById(R.id.messagetxt);
         btnAction = dialog.findViewById(R.id.Add_Update_btn);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Tuesday");
+        reference = FirebaseDatabase.getInstance().getReference().child("Tuesday").child(userId);
 
         heading.setText("CREATE TIMETABLE");
         btnAction.setText("ADD");

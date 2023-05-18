@@ -18,6 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,6 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private  int lastPosition=-1;
     private String day;
+    String userId;
 
 
     public MyAdapter(Context context, ArrayList<user> userArrayList,String day) {
@@ -47,6 +50,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(context).inflate(R.layout.rc_items,parent,false);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            userId = currentUser.getUid();
+        }
         return new MyViewHolder(v);
     }
 
@@ -64,7 +72,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         // this is for updating the for recyclerview
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child(day);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child(day).child(userId);
         holder.rc.setOnClickListener(view -> {
             Dialog dialog=new Dialog(context);
             dialog.setContentView(R.layout.activity_custom_dialog_adapter);
@@ -98,7 +106,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 if(!classnewName.isEmpty())
                 {
                     user updatedData = new user(classnewName, roomnewNo,teachName,timgo);
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(day);
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(day).child(userId);
                     String dataKey = userArrayList.get(position).getKey(); // Assuming you have a "getKey" method in your "myaddmondayapter" class
                     databaseReference.child(dataKey).setValue(updatedData);
                     userArrayList.set(position, updatedData);
@@ -123,7 +131,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     .setMessage("Are you sure want to delete?")
                     .setIcon(R.drawable.baseline_delete_24)
                     .setPositiveButton("Yes", (dialogInterface, i) -> {
-                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(day);
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(day).child(userId);
                         String dataKey = userArrayList.get(position).getKey();
                         databaseReference.child(dataKey).removeValue();
                         userArrayList.remove(position);

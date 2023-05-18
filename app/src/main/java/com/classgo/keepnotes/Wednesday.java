@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,8 @@ public class Wednesday extends Fragment {
     MyAdapter myAdapter;
     ArrayList<user> list;
 
+    String userId;
+
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,13 +48,19 @@ public class Wednesday extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_monday, container, false);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if(currentUser!=null)
+        {
+            userId=currentUser.getUid();
+        }
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         list=new ArrayList<>();
         myAdapter = new MyAdapter(getActivity(), list,"Wednesday");
         recyclerView.setAdapter(myAdapter);
 
-        reference= FirebaseDatabase.getInstance().getReference().child("Wednesday");
+        reference= FirebaseDatabase.getInstance().getReference().child("Wednesday").child(userId);
 
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -95,7 +105,7 @@ public class Wednesday extends Fragment {
         heading = dialog.findViewById(R.id.messagetxt);
         btnAction = dialog.findViewById(R.id.Add_Update_btn);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Wednesday");
+        reference = FirebaseDatabase.getInstance().getReference().child("Wednesday").child(userId);
 
         heading.setText("CREATE TIMETABLE");
         btnAction.setText("ADD");
