@@ -29,7 +29,7 @@
         android:text="CLASSIFY"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/app"
         android:textAlignment="center"
         tools:ignore="HardcodedText" />
 
@@ -40,7 +40,8 @@
         android:layout_below="@id/app_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="Version 1.0"
+        android:text="Version 1.1"
+        android:fontFamily="@font/app"
         android:textAlignment="center"
         android:textColorHint="@color/black"
         android:textSize="16sp"
@@ -62,7 +63,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:padding="12dp"
-        android:textStyle="bold"
+        android:fontFamily="@font/app"
         android:text="This app helps you keep track of your daily schedule and manage your time effectively. It allows you to add, edit, and delete tasks, and view them in a daily, weekly, or monthly format. With customizable reminders and notifications, you'll never miss an important appointment or deadline again."
         android:textColor="@android:color/black"
         android:textSize="16sp"

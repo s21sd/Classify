@@ -27,7 +27,7 @@
         android:textSize="32sp"
         android:textColor="@color/black"
         android:gravity="center"
-        android:textStyle="bold"
+        android:fontFamily="@font/app"
         tools:ignore="HardcodedText" />
 
     <ProgressBar

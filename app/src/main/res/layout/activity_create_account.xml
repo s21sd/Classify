@@ -39,7 +39,7 @@
                 android:text="Hello"
                 android:textColor="@color/black"
                 android:textSize="32sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/app"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:text="Welcome Back"
                 android:textColor="@color/black"
                 android:textSize="32sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/app"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
@@ -73,10 +73,11 @@
                 android:inputType="textEmailAddress"
                 android:padding="16dp"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/app"
 
                 tools:ignore="HardcodedText,RtlHardcoded,TextContrastCheck,VisualLintTextFieldSize"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="yes"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/pass_edit_text"
@@ -90,8 +91,8 @@
                 android:inputType="textPassword"
                 android:padding="16dp"
                 android:textSize="20sp"
-                android:textStyle="bold"
-
+                android:fontFamily="@font/app"
+                android:importantForAutofill="yes"
                 tools:ignore="Autofill,HardcodedText,RtlHardcoded,VisualLintTextFieldSize,TextContrastCheck" />
 
             <EditText
@@ -106,7 +107,8 @@
                 android:inputType="textPassword"
                 android:padding="16dp"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/app"
+                android:importantForAutofill="yes"
 
                 tools:ignore="Autofill,HardcodedText,RtlHardcoded,VisualLintTextFieldSize,TextContrastCheck" />
 
@@ -120,6 +122,7 @@
                 android:text="Create Account"
                 android:textSize="16sp"
                 app:cornerRadius="20dp"
+                android:fontFamily="@font/app"
                 tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize" />
 
             <ProgressBar
@@ -141,14 +144,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:fontFamily="@font/app"
                 android:text="Already have an account ? "
                 tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:fontFamily="@font/app"
                 android:id="@+id/login_text_view_btn"
                 android:text="Login"
                 tools:ignore="HardcodedText" />

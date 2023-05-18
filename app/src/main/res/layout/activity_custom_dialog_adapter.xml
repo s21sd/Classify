@@ -24,9 +24,9 @@
             android:layout_margin="12dp"
             android:gravity="center"
             android:text="Update Timetable"
+            android:fontFamily="@font/app"
             android:textSize="20sp"
             android:textStyle="bold"
-
             tools:ignore="HardcodedText,TextContrastCheck" />
 
         <EditText
@@ -35,11 +35,11 @@
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:padding="16dp"
+            android:fontFamily="@font/app"
             android:background="@drawable/blackborder"
             android:hint="Time"
             android:layout_margin="12dp"
             android:minHeight="48dp"
-            android:textStyle="bold"
             tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
 
         <EditText
@@ -48,21 +48,22 @@
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:padding="16dp"
+            android:fontFamily="@font/app"
             android:background="@drawable/blackborder"
             android:hint="Room no"
             android:layout_margin="12dp"
             android:minHeight="48dp"
-            android:textStyle="bold"
+
             tools:ignore="HardcodedText,LabelFor,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
 
         <EditText
             android:id="@+id/class_name"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:padding="16dp"
             android:layout_margin="12dp"
+            android:fontFamily="@font/app"
             android:background="@drawable/blackborder"
             android:hint="Class Name"
             android:importantForAutofill="no"
@@ -70,12 +71,12 @@
 
         <EditText
             android:id="@+id/teacher_name"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:padding="16dp"
             android:hint="Teacher Name"
+            android:fontFamily="@font/app"
             android:layout_margin="12dp"
             android:background="@drawable/blackborder"
             android:importantForAutofill="no"
@@ -93,7 +94,7 @@
             android:text="Add"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/app"
             app:cornerRadius="20dp"
             tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize" />
 
