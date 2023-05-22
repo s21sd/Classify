@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseDatabase database;
 
     ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,8 @@ public class LoginActivity extends AppCompatActivity {
         loginbtn=findViewById(R.id.login_btn);
         progressBar=findViewById(R.id.progress_bar);
         createaccountbtntextview=findViewById(R.id.create_account_text_view_btn);
+
+
 
         loginbtn.setOnClickListener(view -> loginUser());
         createaccountbtntextview.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)));
@@ -141,6 +146,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     void  loginAccountInFirebase(String email,String password)
     {
+
          firebaseAuth=FirebaseAuth.getInstance();
         changeInProgress(true);
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
@@ -149,8 +155,14 @@ public class LoginActivity extends AppCompatActivity {
             loginbtn.setEnabled(true);
             if(task.isSuccessful())
             {
+
+
+
                 if(Objects.requireNonNull(firebaseAuth.getCurrentUser()).isEmailVerified())
                 {
+
+
+
                     startMainActivity();
 
 
@@ -167,6 +179,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void startMainActivity() {
         startActivity(new Intent(LoginActivity.this,MainActivity.class));

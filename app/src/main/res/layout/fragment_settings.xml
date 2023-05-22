@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/settinglinear"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/pagebkg2"
     tools:context=".SettingsFragment"
@@ -31,6 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/settingemail"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="sunny srivastava"
@@ -199,58 +201,45 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-                        <Button
+
+                        <ImageView
                             android:id="@+id/themeOption1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_margin="5dp"
-                            android:text="Theme 1"
-                            android:textColor="#263238"
-                            app:cornerRadius="20dp"
-                            android:fontFamily="@font/app"
-                            tools:ignore="ButtonStyle,HardcodedText" />
+                            android:background="@drawable/nightback"
+                            />
 
-                        <Button
+                        <ImageView
                             android:id="@+id/themeOption2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_margin="5dp"
-                            android:text="Theme 2"
-                            android:textColor="#263238"
-                            android:fontFamily="@font/app"
-                            app:cornerRadius="20dp"
-                            tools:ignore="ButtonStyle,HardcodedText" />
+                            android:background="@drawable/nightback"
+                             />
 
-                        <Button
+                        <ImageView
                             android:id="@+id/themeOption3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_margin="5dp"
-                            android:text="Theme 4"
-                            android:textColor="#263238"
-                            android:fontFamily="@font/app"
-                            app:cornerRadius="20dp"
-                            tools:ignore="ButtonStyle,HardcodedText" />
+                            android:background="@drawable/nightback"
+                           />
 
-                        <Button
+                        <ImageView
                             android:id="@+id/themeOption4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_margin="5dp"
-                            android:text="Theme 5"
-                            android:fontFamily="@font/app"
-                            android:textColor="#263238"
-                            app:cornerRadius="20dp"
-                            tools:ignore="ButtonStyle,HardcodedText,TextContrastCheck" />
-                        <Button
+                            android:background="@drawable/nightback"
+                            />
+                        <ImageView
                             android:id="@+id/themeOption5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_margin="5dp"
-                            app:cornerRadius="20dp"
-                            android:fontFamily="@font/app"
-                            android:text="Theme 6"
-                            tools:ignore="ButtonStyle,HardcodedText" />
+                            android:background="@drawable/nightback"
+                           />
 
 
 

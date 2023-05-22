@@ -43,6 +43,7 @@ public class Monday extends Fragment {
 
 
 
+
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +61,8 @@ public class Monday extends Fragment {
         list=new ArrayList<>();
         myAdapter = new MyAdapter(getActivity(), list,"Monday");
         recyclerView.setAdapter(myAdapter);
+
+
 
         reference= FirebaseDatabase.getInstance().getReference().child("Monday").child(userId);
 

@@ -12,14 +12,15 @@
             android:title="@string/home"/>
 
 
-        <item android:id="@+id/settings"
-            android:icon="@drawable/baseline_settings_24"
-            app:showAsAction="ifRoom"
-            android:title="@string/settings"/>
+<!--        <item android:id="@+id/settings"-->
+<!--            android:icon="@drawable/baseline_settings_24"-->
+<!--            app:showAsAction="ifRoom"-->
+<!--            android:title="@string/settings"/>-->
 
         <item android:id="@+id/share"
             app:showAsAction="always"
             android:icon="@drawable/baseline_share_24"
+
             android:title="@string/share"/>
 
 

@@ -51,6 +51,7 @@ public class ViewPagerMsgAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
+
         if(position==0)
         {
             return "Monday";

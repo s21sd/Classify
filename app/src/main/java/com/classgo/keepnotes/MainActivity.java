@@ -2,58 +2,35 @@ package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import org.checkerframework.checker.units.qual.A;
-
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener  {
     private DrawerLayout drawerLayout;
     private FirebaseAuth firebaseAuth;
 
-//    RecyclerView recyclerView;
-//    ArrayList<user>userArrayList;
-//    MyAdapter myAdapter;
-//    FirebaseFirestore db;
-//    ProgressDialog progressDialog;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        progressDialog=new ProgressDialog(this);
-//        progressDialog.setCancelable(false);
-//        progressDialog.setMessage("Fetching Data..");
-//        progressDialog.show();
-
 
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -74,54 +51,11 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         }
 
 
-//        recyclerView=findViewById(R.id.mondayrecycler);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        db=FirebaseFirestore.getInstance();
-//        userArrayList=new ArrayList<user>();
-//        myAdapter=new MyAdapter(MainActivity.this,userArrayList);
-//        recyclerView.setAdapter(myAdapter);
-//
-//        EventChangeListner();
+
 
 
 
     }
-
-//    private void EventChangeListner() {
-//        db.collection("Monday").orderBy("time", Query.Direction.ASCENDING)
-//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-//                            if(error!=null)
-//                            {
-//                                if(progressDialog.isShowing())
-//                                {
-//                                    progressDialog.dismiss();
-//                                }
-//                                Log.e("Firebase error",error.getMessage());
-//                            }
-//                            for(DocumentChange dc:value.getDocumentChanges())
-//                            {
-//                                if(dc.getType()==DocumentChange.Type.ADDED)
-//                                {
-//                                    userArrayList.add(dc.getDocument().toObject(user.class));
-//
-//                                }
-//                                myAdapter.notifyDataSetChanged();
-//                                if(progressDialog.isShowing())
-//                                {
-//                                    progressDialog.dismiss();
-//                                }
-//
-//                            }
-//
-//                    }
-//                });
-//
-//
-//    }
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -135,10 +69,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 break;
 
 
-            case R.id.settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new SettingsFragment()).commit();
-
-                break;
+//            case R.id.settings:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new SettingsFragment()).commit();
+//
+//                break;
 
 
 

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FF4081</color>
 
 
-    <color name="lavender">#074865</color>
-    <color name="white">#0D0C0C</color>
-    <color name="my_primary">#454E69</color>
+    <color name="lavender">#C4DFDF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="my_primary">#BDBDBD</color>
+    <color name="colorDivider">#808080</color>
+    <color name="colorCardBackground">#424242</color>
 
 
 

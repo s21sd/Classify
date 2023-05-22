@@ -12,5 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/lavender</item>
         <!-- Customize your theme here. -->
+
+<!--        // this is for the night background-->
+        <item name="android:windowBackground">@drawable/nightback</item>
+
+
+
     </style>
 </resources>
