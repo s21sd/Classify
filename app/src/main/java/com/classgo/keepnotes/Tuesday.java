@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,9 +50,15 @@ public class Tuesday extends Fragment {
         // this is for the every new user to update the value of the firebase
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
         if(currentUser!=null)
         {
              userId = currentUser.getUid();
+        }
+        if(account!=null)
+        {
+            userId=account.getId();
+
         }
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

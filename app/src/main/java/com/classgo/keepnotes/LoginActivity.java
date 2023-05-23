@@ -1,8 +1,10 @@
 package com.classgo.keepnotes;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,100 +41,128 @@ public class LoginActivity extends AppCompatActivity {
     Button loginbtn;
     ProgressBar progressBar;
     TextView createaccountbtntextview;
-    GoogleSignInOptions gso;
-    GoogleSignInClient mGoogleSignInClient;
-    TextView googlesignin;
+
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
 
     ProgressDialog progressDialog;
+
+    // google sign in
+
+    TextView googlesignin;
+    GoogleSignInOptions gso;
+    GoogleSignInClient mGoogleSignInClient;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        firebaseAuth=FirebaseAuth.getInstance();
-        database=FirebaseDatabase.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+
 
 //        progressDialog=new ProgressDialog(LoginActivity.this);
 //        progressDialog.setTitle("Creating Account");
 //        progressDialog.setMessage("We are creating your account");
 
-        googlesignin=findViewById(R.id.logingoogle);
-        gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                        .requestEmail()
-                                .build();
-
-
-        mGoogleSignInClient=GoogleSignIn.getClient(this,gso);
-
-
-        googlesignin.setOnClickListener(view -> signIn());
-
-        emailedittext=findViewById(R.id.email_edit_text);
-        passwordeditext=findViewById(R.id.pass_edit_text);
-        loginbtn=findViewById(R.id.login_btn);
-        progressBar=findViewById(R.id.progress_bar);
-        createaccountbtntextview=findViewById(R.id.create_account_text_view_btn);
-
+        emailedittext = findViewById(R.id.email_edit_text);
+        passwordeditext = findViewById(R.id.pass_edit_text);
+        loginbtn = findViewById(R.id.login_btn);
+        progressBar = findViewById(R.id.progress_bar);
+        createaccountbtntextview = findViewById(R.id.create_account_text_view_btn);
+        googlesignin = findViewById(R.id.logingoogle);
 
 
         loginbtn.setOnClickListener(view -> loginUser());
-        createaccountbtntextview.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)));
-    }
-     void signIn() {
-        Intent signinIntent=mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signinIntent,1000);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==1000)
-        {
-            Task<GoogleSignInAccount>task=GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-              GoogleSignInAccount account=  task.getResult(ApiException.class);
-
-                Intent intent =new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
+        createaccountbtntextview.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class)));
 
 
-            } catch (ApiException e) {
-                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-            }
+        // this is for the google
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInAccount gAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if (gAccount != null) {
+            finish();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
         }
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == Activity.RESULT_OK) {
+                Intent data = result.getData();
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                try {
+                   GoogleSignInAccount account= task.getResult(ApiException.class);
+                    finish();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } catch (ApiException e) {
+                    Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        googlesignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent=mGoogleSignInClient.getSignInIntent();
+                activityResultLauncher.launch(signInIntent);
+
+            }
+        });
     }
 
-    private void firebaseAuth(String idToken) {
-        AuthCredential credential= GoogleAuthProvider.getCredential(idToken,null);
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(task -> {
-                        if(task.isSuccessful())
-                        {
-                            FirebaseUser user=firebaseAuth.getCurrentUser();
-                            startGoogle();
-//                            Intent intent =new Intent(LoginActivity.this,MainActivity.class);
-//                            startActivity(intent);
-//                            finish();
-                        }
-                        else{
-                            Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                        }
 
-                });
 
-    }
 
-    private void startGoogle() {
-        finish();
-        Intent intent =new Intent(LoginActivity.this,MainActivity.class);
-        startActivity(intent);
+//     void signIn() {
+//        Intent signinIntent=mGoogleSignInClient.getSignInIntent();
+//        startActivityForResult(signinIntent,1000);
+//    }
 
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode==1000)
+//        {
+//            Task<GoogleSignInAccount>task=GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//              GoogleSignInAccount account=  task.getResult(ApiException.class);
+//
+//                Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+//                startActivity(intent);
+//                finish();
+//
+//
+//            } catch (ApiException e) {
+//                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+
+//    private void firebaseAuth(String idToken) {
+//        AuthCredential credential= GoogleAuthProvider.getCredential(idToken,null);
+//        firebaseAuth.signInWithCredential(credential)
+//                .addOnCompleteListener(task -> {
+//                        if(task.isSuccessful())
+//                        {
+//                            FirebaseUser user=firebaseAuth.getCurrentUser();
+//                            startGoogle();
+//                        }
+//                        else{
+//                            Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                });
+//
+//    }
+
+//    private void startGoogle() {
+//        finish();
+//        Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+//        startActivity(intent);
+//
+//    }
 
     void loginUser()
     {

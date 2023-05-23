@@ -3,6 +3,7 @@ package com.classgo.keepnotes;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,9 +40,17 @@ public class Monday extends Fragment {
 
     DatabaseReference reference;
 
+    // this is for the google to get the current user id
+
+    private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN = 123;
+
     MyAdapter myAdapter;
     ArrayList<user> list;
     String userId;
+
+
+
 
 
 
@@ -52,9 +64,16 @@ public class Monday extends Fragment {
         View view = inflater.inflate(R.layout.fragment_monday, container, false);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
         if(currentUser!=null)
         {
             userId=currentUser.getUid();
+
+        }
+        if(account!=null)
+        {
+            userId=account.getId();
         }
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -63,8 +82,10 @@ public class Monday extends Fragment {
         recyclerView.setAdapter(myAdapter);
 
 
-
         reference= FirebaseDatabase.getInstance().getReference().child("Monday").child(userId);
+
+
+
 
 
         reference.addValueEventListener(new ValueEventListener() {

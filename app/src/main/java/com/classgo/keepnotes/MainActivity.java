@@ -16,6 +16,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -24,6 +30,11 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     private DrawerLayout drawerLayout;
     private FirebaseAuth firebaseAuth;
 
+    GoogleSignInClient googleSignInClient;
+    GoogleSignInOptions googleSignInOptions;
+
+
+
 
 
 
@@ -31,6 +42,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -49,6 +62,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             navigationView.setCheckedItem(R.id.nav_home);
 
         }
+
+
+
 
 
 
@@ -107,8 +123,19 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                         .setIcon(R.drawable.baseline_logout_24)
                         .setPositiveButton("Yes", (dialogInterface, i) -> {
                             firebaseAuth.signOut();
-                            Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
+                            googleSignInClient.signOut().addOnCompleteListener(MainActivity.this, new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(MainActivity.this, "Logout Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                                    finish();
+                                }
+                            });
+
+
+//                            Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
+//                            startActivity(new Intent(MainActivity.this,LoginActivity.class));
 
                         }).setNegativeButton("No", (dialogInterface, i) -> {
 
