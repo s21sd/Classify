@@ -40,7 +40,7 @@ public class AboutFragment extends Fragment {
             startActivity(intent);
         });
 
-        openmail.setOnClickListener(view13 -> startActivity(new Intent(Intent.ACTION_SENDTO,Uri.parse("mailto:srivastavasunny359@gmail.com"))));
+        openmail.setOnClickListener(view13 -> startActivity(new Intent(Intent.ACTION_SENDTO,Uri.parse("mailto:classify359@gmail.com"))));
 
 
 

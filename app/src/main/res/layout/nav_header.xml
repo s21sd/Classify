@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="200dp"
     android:gravity="bottom"
     android:padding="16dp"
     android:background="@drawable/navheader"
@@ -32,15 +32,15 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText,TextContrastCheck" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/navheadermail"
-        android:text="srivastavasunny359@gmail.com"
-        android:textColor="@color/darkGrey"
-        android:fontFamily="@font/app"
-        android:layout_marginBottom="37dp"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/navheadermail"-->
+<!--        android:text="srivastavasunny359@gmail.com"-->
+<!--        android:textColor="@color/darkGrey"-->
+<!--        android:fontFamily="@font/app"-->
+<!--        android:layout_marginBottom="37dp"-->
+<!--        tools:ignore="HardcodedText,TextContrastCheck" />-->
 
 
 

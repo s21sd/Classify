@@ -2,6 +2,7 @@ package com.classgo.keepnotes;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Monday extends Fragment {
@@ -50,12 +52,6 @@ public class Monday extends Fragment {
     String userId;
 
 
-
-
-
-
-
-
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,16 +61,18 @@ public class Monday extends Fragment {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+
+//        Intent intent= requireActivity().getIntent();
         if(currentUser!=null)
         {
             userId=currentUser.getUid();
 
         }
-        if(account!=null)
-        {
-            userId=account.getId();
-        }
+
+//            userId=intent.getStringExtra("text");
+
+
+
         recyclerView = view.findViewById(R.id.mondayrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         list=new ArrayList<>();

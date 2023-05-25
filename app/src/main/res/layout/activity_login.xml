@@ -97,6 +97,7 @@
                 android:importantForAutofill="yes"
                 tools:ignore="Autofill,HardcodedText,RtlHardcoded,VisualLintTextFieldSize,TextContrastCheck" />
 
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_btn"
                 android:layout_width="match_parent"
@@ -110,53 +111,57 @@
                 tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize" />
 
             <ProgressBar
-                android:layout_width="24dp"
-                android:layout_height="64dp"
+                android:layout_width="35dp"
+                android:layout_height="36dp"
                 android:id="@+id/progress_bar"
-                android:layout_gravity="center"
                 android:visibility="gone"
+                android:layout_gravity="center"
                 android:layout_marginTop="12dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/form_layout"
-            android:orientation="horizontal"
-            android:gravity="center">
 
             <TextView
+                android:id="@+id/forgetPass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account ? "
-                tools:ignore="HardcodedText" />
+                android:layout_marginTop="5dp"
+                android:layout_gravity="end"
+                android:padding="12dp"
+                android:text="Forgot your Password?"
+                android:textSize="16sp"
+                app:cornerRadius="20dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SmallSp,TextContrastCheck,UseCompatTextViewDrawableXml,VisualLintButtonSize" />
 
-            <TextView
-                android:layout_width="wrap_content"
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:id="@+id/create_account_text_view_btn"
-                android:text="Create Account"
-                tools:ignore="HardcodedText" />
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account ? "
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:id="@+id/create_account_text_view_btn"
+                    android:text="Create Account"
+                    tools:ignore="HardcodedText" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/logingoogle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/lavenderborder"
-            android:drawableLeft="@drawable/google"
-            android:layout_below="@id/form_layout"
-            android:gravity="center"
-            android:padding="12dp"
-            android:text="Login with Google"
-            android:textSize="16sp"
-            android:fontFamily="@font/app"
-            app:cornerRadius="20dp"
-            tools:ignore="HardcodedText,RtlHardcoded,TextContrastCheck,UseCompatTextViewDrawableXml,VisualLintButtonSize" />
+
+
+
 
     </RelativeLayout>
 
