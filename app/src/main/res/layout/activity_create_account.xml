@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CreateAccountActivity"
     android:orientation="horizontal"
-    android:background="@drawable/signupforclassify">
+    android:background="@drawable/signunew">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,51 +14,14 @@
         android:layout_marginVertical="16dp"
         android:layout_marginHorizontal="32dp"
         tools:context=".LoginActivity"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         tools:ignore="UselessParent">
 
-        <ImageView
-            android:id="@+id/login_icon"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginVertical="22dp"
-            android:src="@drawable/login"
-            tools:ignore="ContentDescription,ImageContrastCheck" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hello_text"
-            android:layout_below="@+id/login_icon"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hello"
-                android:textColor="@color/black"
-                android:textSize="32sp"
-                android:fontFamily="@font/app"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Welcome Back"
-                android:textColor="@color/black"
-                android:textSize="32sp"
-                android:fontFamily="@font/app"
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/hello_text"
             android:id="@+id/form_layout"
-            android:layout_marginVertical="32dp"
+            android:layout_marginTop="300dp"
             android:orientation="vertical">
 
             <EditText
@@ -139,21 +102,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/form_layout"
             android:orientation="horizontal"
+            android:layout_marginTop="12dp"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/app"
+                android:layout_marginEnd="5dp"
                 android:text="Already have an account ? "
                 tools:ignore="HardcodedText" />
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/app"
                 android:id="@+id/login_text_view_btn"
                 android:text="Login"
+                android:textSize="12sp"
+                app:cornerRadius="20dp"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>

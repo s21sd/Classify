@@ -17,9 +17,9 @@ import java.util.Objects;
 
 public class CreateAccountActivity extends AppCompatActivity {
     EditText emailedittext,passwordeditext,confirmpasswordedittext;
-    Button createAccountbtn;
+    Button createAccountbtn,loginbtntextView;
     ProgressBar progressBar;
-    TextView loginbtntextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
