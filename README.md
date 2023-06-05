@@ -1,5 +1,5 @@
 # Classify
-An app that can manage your all the days classes , so don't worry about your time it has functionality to update, delete and add your classes with the time and room no and teahername.
+An app that can manage your all the days classes 🧑‍💻🧑‍💻, so don't worry about your time it has functionality to update, delete and add your classes with the time and room no and teachername.
 So manage your time efficiently ..
 
 <img src="https://github.com/s21sd/Classify/assets/98369603/4f62a1b1-e69c-45b1-8e28-9dd9c5a2e864" width="500" height="1000" alt="Image Description">
