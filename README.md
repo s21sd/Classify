@@ -1,6 +1,5 @@
 # Classify
-An app that can manage your all the days classes 🧑‍💻🧑‍💻, so don't worry about your time it has functionality to update, delete and add your classes with the time and room no and teachername.
-So manage your time efficiently ..
+The App Name is a powerful application that provides CRUD functionality and allows users to store and manage a seven-day timetable. With this app, users can easily create, read, update, and delete entries in their timetable, helping them stay organized and plan their schedules effectively. The app allows users to update various details for each timetable entry, including time, class name, teacher name, and room number.⌚👩‍💻
 
 <img src="https://github.com/s21sd/Classify/assets/98369603/4f62a1b1-e69c-45b1-8e28-9dd9c5a2e864" width="500" height="1000" alt="Image Description">
 <img src="https://github.com/s21sd/Classify/assets/98369603/05899b2b-1f8d-430a-a387-9e1d0787e8ea" width="500" height="1000" alt="Image Description">
