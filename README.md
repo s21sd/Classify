@@ -1,5 +1,5 @@
 # Classify
-The App Name is a powerful application that provides CRUD functionality and allows users to store and manage a seven-day timetable. With this app, users can easily create, read, update, and delete entries in their timetable, helping them stay organized and plan their schedules effectively. The app allows users to update various details for each timetable entry, including time, class name, teacher name, and room number.⌚👩‍💻
+CLASSIFY is a powerful application that provides CRUD functionality and allows users to store and manage a seven-day timetable. With this app, users can easily create, read, update, and delete entries in their timetable, helping them stay organized and plan their schedules effectively. The app allows users to update various details for each timetable entry, including time, class name, teacher name, and room number.⌚👩‍💻
 
 <h1>Features</h1>
 
