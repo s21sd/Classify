@@ -100,7 +100,6 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:switchMinWidth="50dp"
-                        android:theme="@style/nightswitch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck,DuplicateSpeakableTextCheck">
 
                     </Switch>
@@ -138,7 +137,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:switchMinWidth="50dp"
-                        android:theme="@style/nightswitch"
+
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck">
 
                     </Switch>

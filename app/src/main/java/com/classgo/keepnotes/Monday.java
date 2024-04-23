@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 
 
@@ -156,6 +157,14 @@ public class Monday extends Fragment {
         });
 
         dialog.show();
+//        private void scheduleClassNotification(myaddmondayapter class)
+//        {
+//            Calendar calendar=Calendar.getInstance();
+//            int currentHour=calendar.get(Calendar.HOUR_OF_DAY);
+//            int currMinute=calendar.get(Calendar.MINUTE);
+//
+//        }
+
     }
 
 

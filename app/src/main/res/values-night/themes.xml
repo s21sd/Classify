@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/lavender</item>
         <item name="colorPrimaryVariant">@color/lavender</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
 
 <!--        // this is for the night background-->
-        <item name="android:windowBackground">@drawable/nightback</item>
+<!--        <item name="android:windowBackground">@drawable/nightback</item>-->
 
 
 
