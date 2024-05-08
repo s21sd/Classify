@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
 
     tools:context=".HomeFragment">
@@ -12,20 +12,21 @@
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMinWidth="80dp"
         android:fontFamily="@font/app"
+        app:tabMinWidth="80dp"
+        app:tabIndicatorGravity="stretch"
         app:tabMode="scrollable"
+        app:tabPaddingEnd="8dp"
+        app:tabPaddingStart="8dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-
+    <!--        we will add the tabindictor later-->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="@font/app"
         tools:ignore="SpeakableTextPresentCheck" />
-
-
 
 
 </LinearLayout>
