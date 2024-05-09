@@ -85,9 +85,6 @@ public class Monday extends Fragment {
         reference= FirebaseDatabase.getInstance().getReference().child("Monday").child(userId);
 
 
-
-
-
         reference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override

@@ -11,8 +11,6 @@
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         app:tabIndicatorHeight="0dp"
         android:fontFamily="@font/app"
         app:tabGravity="center"
@@ -22,7 +20,7 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="RtlSymmetry,SpeakableTextPresentCheck" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

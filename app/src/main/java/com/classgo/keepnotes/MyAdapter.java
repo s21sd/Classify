@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -169,7 +170,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     {
 
         TextView time,classname,teachername,roomno;
-        RelativeLayout rc;
+        ConstraintLayout rc;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

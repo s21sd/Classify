@@ -2,13 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Outer shape with rounded corners -->
-    <item
-        android:left="10dp"
-        android:right="10dp">
+    <item>
         <shape android:shape="rectangle">
             <corners
-                android:bottomLeftRadius="30dp"
-                android:bottomRightRadius="30dp"/>
+                android:bottomLeftRadius="15dp"
+                android:bottomRightRadius="15dp" />
             <solid android:color="@color/lavender" />
         </shape>
     </item>
